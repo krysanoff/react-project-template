@@ -1,0 +1,6 @@
+public/
+!public/index.html
+
+node_modules/
+
+./**/*.map
