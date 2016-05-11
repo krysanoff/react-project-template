@@ -9,18 +9,18 @@ import autoprefixer from 'gulp-autoprefixer'
 const isDevelopment = !process.env.NODE_ENV || process.env.NODE_ENV == 'development'
 
 export default gulp.task('styles', () => {
-	return gulp.src('app/stylus/**/*.styl')
+	return gulp.src(['./app/styles/**/*.styl', './app/blocks/**/*.styl'])
 		.pipe(gulpIf(isDevelopment, sourcemap.init()))
 		.pipe(debug({title: 'src'}))
 		.pipe(stylus())
 		.pipe(debug({title: 'stylus'}))
-		.pipe(concat('style.css'))
-		.pipe(debug({title: 'concat'}))
 		.pipe(autoprefixer({
 			browsers: ['last 3 versions'],
 			cascade: false
 		}))
 		.pipe(debug({title: 'autoprefixer'}))
+		.pipe(concat('style.css'))
+		.pipe(debug({title: 'concat'}))
 		.pipe(gulpIf(isDevelopment, sourcemap.write('.')))
-		.pipe(gulp.dest('app/stylus'))
+		.pipe(gulp.dest('./app/resources/styles'))
 })

@@ -13,7 +13,7 @@ export default {
 
 	entry: {
 		index: ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server', './index'],
-		style: ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server', './stylus/style']
+		style: ['webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server', './resources/styles/style']
 	},
 	output: {
 		filename: "[name].js",
@@ -34,7 +34,7 @@ export default {
 			name: 'common'
 		}),
 
-		new ExtractTextPlugin("stylus/style.css", {allChunks: true, disable: NODE_ENV=='development'}),
+		new ExtractTextPlugin("resources/styles/style.css", {allChunks: true, disable: NODE_ENV=='development'}),
 
 		new webpack.HotModuleReplacementPlugin()
 	],
@@ -87,5 +87,3 @@ if (NODE_ENV == 'production') {
 		})
 	)
 }
-
-
